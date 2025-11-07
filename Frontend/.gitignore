@@ -1,0 +1,38 @@
+# Logs
+*.log
+*.tmp
+
+# Archivos de configuración de Visual Studio
+.vs/
+*.suo
+*.user
+*.opensdf
+*.sdf
+
+# Archivos temporales
+temp/
+tmp/
+
+# Archivos de compilación
+dist/
+out/
+bin/
+
+# Node_modules
+node_modules/
+
+# Archivos de entorno
+*.env
+
+# Caché
+.cache/
+
+# VS Code
+.vscode/
+
+# Cobertura de pruebas
+coverage/
+
+# Dependencias
+package-lock.json
+yarn.lock
