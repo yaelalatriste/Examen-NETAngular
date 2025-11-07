@@ -1,0 +1,31 @@
+.content-wrapper {
+  min-height: calc(100vh - 56px);
+  background: #f4f6f9;
+}
+
+.small-box {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+
+  .inner {
+    h4 {
+      font-weight: bold;
+      font-size: 2rem;
+    }
+  }
+
+  .icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 40px;
+    opacity: 0.2;
+  }
+}
+
+.nav-link.active {
+  background-color: #007bff !important;
+  color: white !important;
+}

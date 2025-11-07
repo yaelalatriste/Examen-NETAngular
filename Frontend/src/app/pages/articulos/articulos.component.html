@@ -1,0 +1,85 @@
+<div class="container-fluid" style="padding: 40px;">
+    <h3 class="text-center">Listado de Articulos</h3>
+    
+    <div class="row col-lg-12 mt-2">
+        <div class="col-lg-12">
+            <button class="btn btn-primary" (click)="openModal()">
+                Nuevo Articulo
+            </button>
+        </div>
+    </div>
+
+    <table class="table table-hover mt-3">
+        <thead class="table-primary">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Codigo</th>
+                <th scope="col">descripcion</th>
+                <th scope="col">Precío</th>
+                <th scope="col">Stock</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (pl of articuloList; track $index) 
+            {
+                <tr>
+                    <td>{{pl.id}}</td>
+                    <td>{{pl.codigo}}</td>
+                    <td><b>{{pl.descripcion}}</b></td>
+                    <td><b>{{pl.precio}} USD</b></td>
+                    <td><b>{{pl.stock}}</b></td>
+                    <td>
+                        <button href="javascript:" (click)="openEditModal(pl)" class="btn btn-sm btn-primary">Editar</button>
+                        <button href="javascript:" (click)="deleteArticulo(pl.id)" style="margin-left: 5px;" class="btn btn-sm btn-danger">Eliminar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<!--Modal para Agregar Productos -->
+<div class="modal fade" #ArticuloModal tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title">Agregar Articulo</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+      </div>
+
+      <div class="modal-body">
+        <form [formGroup]="articuloFormComponent" (ngSubmit)="onSubmit()">
+          <div class="mb-3" *ngIf="showField">
+            <label>Id</label>
+            <input formControlName="id" class="form-control" [disabled]="isDisabled">
+          </div>
+
+          <div class="mb-3">
+            <label>Código</label>
+            <input formControlName="codigo" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label>Descripción</label>
+            <textarea formControlName="descripcion" class="form-control"></textarea>
+          </div>
+          <div class="mb-3">
+            <label>Precio</label>
+            <input type="number" formControlName="precio" class="form-control">
+          </div>
+          <div class="mb-3">
+            <label>Stock</label>
+            <input type="number" formControlName="stock" class="form-control">
+          </div>
+
+          <button type="submit" class="btn btn-success" >
+            Guardar
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

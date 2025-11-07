@@ -1,0 +1,39 @@
+<div class="login-page d-flex align-items-center justify-content-center">
+  <div class="card shadow-sm" style="width: 360px;">
+    <div class="card-header text-center bg-primary text-white">
+      <h4><i class="fas fa-user-shield me-2"></i>Iniciar Sesión</h4>
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label for="username" class="form-label">Usuario</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-user"></i></span>
+            <input id="username" type="text" class="form-control" placeholder="Usuario" [(ngModel)]="username" name="username" required>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Contraseña</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+            <input id="password" type="password" class="form-control" placeholder="Contraseña" [(ngModel)]="password" name="password" required>
+          </div>
+        </div>
+
+        <div *ngIf="error" class="alert alert-danger py-1 text-center">
+          {{ error }}
+        </div>
+
+        <div class="d-grid">
+          <button class="btn btn-primary" type="submit">
+            <i class="fas fa-sign-in-alt me-2"></i>Entrar
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="card-footer text-center text-muted">
+      <small>© 2025 Mi Panel AdminLTE</small>
+    </div>
+  </div>
+</div>

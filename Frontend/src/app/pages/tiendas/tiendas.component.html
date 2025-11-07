@@ -1,0 +1,74 @@
+<div class="container-fluid" style="padding: 40px;">
+    <h3 class="text-center">Listado de Tiendas</h3>
+    
+    <div class="row col-lg-12 mt-2">
+        <div class="col-lg-12">
+            <button class="btn btn-primary" (click)="openModal()">
+                Nuevo Tienda
+            </button>
+        </div>
+    </div>
+
+    <table class="table table-hover mt-3">
+        <thead class="table-primary">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Sucursal</th>
+                <th scope="col">Dirección</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (pl of tiendaList; track $index) 
+            {
+                <tr>
+                    <td>{{pl.id}}</td>
+                    <td>{{pl.sucursal}}</td>
+                    <td><b>{{pl.direccion}}</b></td>
+                    <td>
+                        <button href="javascript:" (click)="openEditModal(pl)" class="btn btn-sm btn-primary">Editar</button>
+                        <button href="javascript:" (click)="deleteTienda(pl.id)" style="margin-left: 5px;" class="btn btn-sm btn-danger">Eliminar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<!--Modal para Agregar Productos -->
+<div class="modal fade" #TiendaModal tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title">Agregar Tienda</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+      </div>
+
+      <div class="modal-body">
+        <form [formGroup]="tiendaFormComponent" (ngSubmit)="onSubmit()">
+          <div class="mb-3" *ngIf="showField">
+            <label>Id</label>
+            <input formControlName="id" class="form-control" [disabled]="isDisabled">
+          </div>
+
+          <div class="mb-3">
+            <label>Sucursal</label>
+            <input formControlName="sucursal" class="form-control">
+          </div>
+
+          <div class="mb-3">
+            <label>Dirección</label>
+            <textarea formControlName="direccion" class="form-control"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-success" >
+            Guardar
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
